@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A238m" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +20,68 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQW-De-KXk" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="d2D-pj-taX">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAo-g4-gIv">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="5z8-Vu-qcJ"/>
+                                    <barButtonItem style="plain" id="blB-H2-eyo">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="snG-dF-HLW">
+                                            <rect key="frame" x="147" y="6.5" width="212" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Standard"/>
+                                                <segment title="Hybrid"/>
+                                                <segment title="Satellite"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="Terrain:" destination="BYZ-38-t0r" eventType="valueChanged" id="8cj-Z3-X4g"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zAo-g4-gIv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0Fw-IK-jiq"/>
+                            <constraint firstItem="d2D-pj-taX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1z4-au-RWV"/>
+                            <constraint firstItem="SQW-De-KXk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2NS-aI-5LX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zAo-g4-gIv" secondAttribute="bottom" id="5DW-bv-aek"/>
+                            <constraint firstAttribute="trailing" secondItem="SQW-De-KXk" secondAttribute="trailing" id="A6L-6g-7HJ"/>
+                            <constraint firstAttribute="trailing" secondItem="d2D-pj-taX" secondAttribute="trailing" id="IqS-TW-3kK"/>
+                            <constraint firstItem="zAo-g4-gIv" firstAttribute="top" secondItem="SQW-De-KXk" secondAttribute="bottom" id="TVY-3t-ztz"/>
+                            <constraint firstItem="d2D-pj-taX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Xq0-BE-enj"/>
+                            <constraint firstItem="SQW-De-KXk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dgZ-1C-FNw"/>
+                            <constraint firstItem="d2D-pj-taX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hZe-JI-PiR"/>
+                            <constraint firstAttribute="trailing" secondItem="zAo-g4-gIv" secondAttribute="trailing" id="kNX-Bb-lr4"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="googleMapView" destination="SQW-De-KXk" id="Xr8-w1-B0W"/>
+                        <outlet property="searchBar" destination="d2D-pj-taX" id="XOC-ob-en0"/>
+                        <outlet property="searchDisplayController" destination="aRs-B7-9fL" id="QnC-VB-l4I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="aRs-B7-9fL">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="n34-87-gLO"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="tkZ-Ou-DLf"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="ajB-NB-ndT"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="9gE-H1-pQu"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
         </scene>
     </scenes>
 </document>

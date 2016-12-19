@@ -7,8 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+@import GoogleMaps;
+@import GooglePlaces;
+@import GooglePlacePicker;
 
-@interface ViewController : UIViewController
+
+@interface ViewController : UIViewController <GMSMapViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate> {
+    
+    GMSPlacePicker *placePicker;
+}
+
+@property (weak, nonatomic) IBOutlet GMSMapView *googleMapView;
+
+@property(nonatomic,strong) CLLocationManager *locationManager;
+
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+
+@property (strong, nonatomic) NSMutableArray *pinLocs;
+
+- (IBAction)Terrain:(UISegmentedControl *)sender;
+
 
 
 @end
